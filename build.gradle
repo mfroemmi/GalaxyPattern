@@ -26,7 +26,7 @@ tasks.withType(JavaCompile) {
 
 application {
     mainModule = 'com.example.galaxypattern'
-    mainClass = 'com.example.galaxypattern.HelloApplication'
+    mainClass = 'com.example.galaxypattern.MainApplication'
 }
 
 [compileKotlin, compileTestKotlin].forEach {
