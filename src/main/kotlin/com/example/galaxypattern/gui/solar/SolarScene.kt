@@ -1,4 +1,4 @@
-package com.example.galaxypattern.solar
+package com.example.galaxypattern.gui.solar
 
 import com.example.galaxypattern.nav.NavController
 import javafx.scene.control.Button
@@ -6,11 +6,11 @@ import javafx.scene.control.Label
 import javafx.scene.layout.VBox
 
 class SolarScene : VBox() {
-    val navController = NavController.getInstance()
+    private val navController = NavController.getInstance()
 
-    val scene = this
-    var label: Label = Label("This is the Second Scene")
-    var button: Button = Button("Switch scene")
+    private val scene = this
+    private var label: Label = Label("This is the Second Scene")
+    private var button: Button = Button("Switch scene")
 
     init {
         scene.children.addAll(label, button)
