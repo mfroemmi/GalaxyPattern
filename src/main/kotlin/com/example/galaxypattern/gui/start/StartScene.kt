@@ -27,6 +27,8 @@ class StartScene : StackPane() {
             timer.stop()
             navController.navigateTo("SolarScene")
         }
+
+        viewModel.planets[0]
     }
 
     private fun update() {

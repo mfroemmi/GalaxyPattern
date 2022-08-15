@@ -9,8 +9,8 @@ class SolarScene : VBox() {
     private val navController = NavController.getInstance()
 
     private val scene = this
-    private var label: Label = Label("This is the Second Scene")
-    private var button: Button = Button("Switch scene")
+    private var label: Label = Label("Solar System")
+    private var button: Button = Button("Start")
 
     init {
         scene.children.addAll(label, button)
