@@ -5,6 +5,9 @@ import javafx.stage.Stage
 
 class NavController private constructor() {
 
+    /**
+     * Singleton pattern
+     */
     companion object {
         @Volatile
         private lateinit var instance: NavController
