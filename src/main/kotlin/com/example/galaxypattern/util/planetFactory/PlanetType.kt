@@ -1,6 +1,6 @@
 package com.example.galaxypattern.util.planetFactory
 
-enum class Planets {
+enum class PlanetType {
     MERKUR,
     VENUS,
     ERDE,

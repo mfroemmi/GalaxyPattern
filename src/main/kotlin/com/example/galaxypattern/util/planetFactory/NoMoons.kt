@@ -19,11 +19,27 @@ class NoMoons(private val planet: Planet) : IPlanetParamHelper {
         return "${planet.density} g/cm³"
     }
 
+    override fun distance(): String {
+        return "${planet.distance} AE"
+    }
+
+    override fun period(): String {
+        return "${planet.period} Tage"
+    }
+
+    override fun rotation(): String {
+        return "${planet.rotation} Tage"
+    }
+
     override fun atmosphere(): String {
         return planet.atmosphere
     }
 
     override fun moons(): String {
         return "No moons"
+    }
+
+    override fun inclination(): String {
+        return "${planet.inclination} °"
     }
 }

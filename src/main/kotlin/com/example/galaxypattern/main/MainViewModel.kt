@@ -19,6 +19,6 @@ class MainViewModel {
         }
     }
 
-    val width = 1024.0
+    val width = 1280.0
     val height = 768.0
 }

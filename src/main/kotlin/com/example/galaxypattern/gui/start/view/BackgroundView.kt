@@ -1,14 +1,17 @@
 package com.example.galaxypattern.gui.start.view
 
+import com.example.galaxypattern.main.MainViewModel
 import javafx.scene.canvas.Canvas
 import javafx.scene.canvas.GraphicsContext
 import javafx.scene.paint.Color
 
 class BackgroundView() : Canvas() {
 
+    private val viewModel = MainViewModel.getInstance()
+
     private val gc: GraphicsContext = this.graphicsContext2D
-    private val widthView = 1024.0
-    private val heightView = 768.0
+    private val widthView = viewModel.width
+    private val heightView = viewModel.height
 
     init {
         this.width = widthView

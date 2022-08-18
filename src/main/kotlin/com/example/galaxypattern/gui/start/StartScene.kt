@@ -17,7 +17,7 @@ class StartScene : StackPane() {
     }
 
     init {
-        scene.children.addAll(viewModel.backgroundView, viewModel.sunView, viewModel.label, viewModel.button)
+        scene.children.addAll(viewModel.backgroundView, viewModel.solarSystemView, viewModel.label, viewModel.button)
         start()
         timer.start()
     }
@@ -27,12 +27,16 @@ class StartScene : StackPane() {
             timer.stop()
             navController.navigateTo("SolarScene")
         }
-
-        viewModel.planets[0]
+        viewModel.solarSystemView.sun.setOnMouseClicked {
+            println("Sun")
+        }
+        viewModel.solarSystemView.earth.setOnMouseClicked {
+            println("Earth")
+        }
     }
 
     private fun update() {
         viewModel.backgroundView.draw()
-        viewModel.sunView.draw()
+        viewModel.solarSystemView.update()
     }
 }
