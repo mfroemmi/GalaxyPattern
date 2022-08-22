@@ -17,15 +17,17 @@ class StartScene : StackPane() {
     }
 
     init {
-        scene.children.addAll(viewModel.backgroundView, viewModel.solarSystemView, viewModel.label, viewModel.button)
+        scene.children.addAll(viewModel.backgroundView, viewModel.solarSystemView, viewModel.label, viewModel.button, viewModel.btnPlayStop, viewModel.slider)
         start()
         timer.start()
     }
 
     private fun start() {
         viewModel.button.setOnAction {
-            timer.stop()
             navController.navigateTo("SolarScene")
+        }
+        viewModel.btnPlayStop.setOnAction {
+            viewModel.isRotate = !viewModel.isRotate
         }
         viewModel.solarSystemView.sun.setOnMouseClicked {
             println("Sun")
@@ -33,10 +35,14 @@ class StartScene : StackPane() {
         viewModel.solarSystemView.earth.setOnMouseClicked {
             println("Earth")
         }
+
+        viewModel.solarSystemView.update()
     }
 
     private fun update() {
         viewModel.backgroundView.draw()
-        viewModel.solarSystemView.update()
+        if (viewModel.isRotate) {
+            viewModel.solarSystemView.update()
+        }
     }
 }

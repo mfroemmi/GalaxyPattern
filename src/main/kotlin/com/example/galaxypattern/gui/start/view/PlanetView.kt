@@ -1,21 +1,32 @@
 package com.example.galaxypattern.gui.start.view
 
+import com.example.galaxypattern.model.Planet
 import javafx.scene.canvas.Canvas
 import javafx.scene.canvas.GraphicsContext
 import javafx.scene.paint.Color
+import kotlin.math.cos
+import kotlin.math.sin
 
-class PlanetView(private val radius: Double, private val color: Color) : Canvas() {
+class PlanetView(private val planet: Planet, private val color: Color) : Canvas() {
 
     private val gc: GraphicsContext = this.graphicsContext2D
+
+    var phi = 0.0
+    private val radius = planet.diameter.toDouble() / 2000.0
 
     init {
         this.width = radius
         this.height = radius
     }
 
-    fun draw(x: Double, y: Double) {
-        this.translateX = x
-        this.translateY = y
+    fun draw(distanceCorrection: Int) {
+        if (phi >= 360.0) {
+            phi = 0.0
+        } else {
+            phi += 10 / planet.period
+            this.translateX = planet.distance * cos(phi) * distanceCorrection
+            this.translateY = planet.distance * sin(phi) * distanceCorrection
+        }
 
         gc.clearRect(0.0, 0.0, radius, radius)
         gc.fill = color
