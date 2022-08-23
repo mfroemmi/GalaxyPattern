@@ -1,23 +1,49 @@
 package com.example.galaxypattern.gui.solar
 
 import com.example.galaxypattern.nav.NavController
-import javafx.scene.control.Button
-import javafx.scene.control.Label
+import javafx.animation.AnimationTimer
+import javafx.scene.layout.StackPane
 import javafx.scene.layout.VBox
 
-class SolarScene : VBox() {
+class SolarScene : StackPane() {
     private val navController = NavController.getInstance()
+    private val viewModel = SolarViewModel.getInstance()
 
     private val scene = this
-    private var label: Label = Label("Solar System")
-    private var button: Button = Button("Start")
+
+    private val timer: AnimationTimer = object : AnimationTimer() {
+        override fun handle(now: Long) {
+            update()
+        }
+    }
 
     init {
-        scene.children.addAll(label, button)
+        scene.children.addAll(viewModel.backgroundView, viewModel.solarSystemView, viewModel.label, viewModel.button, viewModel.btnPlayStop, viewModel.slider)
         start()
+        timer.start()
     }
 
     private fun start() {
-        button.setOnAction { navController.navigateTo("StartScene") }
+        viewModel.button.setOnAction {
+            navController.navigateTo("StartScene")
+        }
+        viewModel.btnPlayStop.setOnAction {
+            viewModel.isRotate = !viewModel.isRotate
+        }
+        viewModel.solarSystemView.sun.setOnMouseClicked {
+            println("Sun")
+        }
+        viewModel.solarSystemView.earth.setOnMouseClicked {
+            println("Earth")
+        }
+
+        viewModel.solarSystemView.update()
+    }
+
+    private fun update() {
+        viewModel.backgroundView.draw()
+        if (viewModel.isRotate) {
+            viewModel.solarSystemView.update()
+        }
     }
 }

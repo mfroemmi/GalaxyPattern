@@ -1,4 +1,4 @@
-package com.example.galaxypattern.gui.start.view
+package com.example.galaxypattern.main.view
 
 import com.example.galaxypattern.model.Planet
 import javafx.scene.canvas.Canvas

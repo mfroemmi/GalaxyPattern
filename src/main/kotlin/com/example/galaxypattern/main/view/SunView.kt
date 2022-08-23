@@ -1,4 +1,4 @@
-package com.example.galaxypattern.gui.start.view
+package com.example.galaxypattern.main.view
 
 import javafx.scene.canvas.Canvas
 import javafx.scene.canvas.GraphicsContext
