@@ -3,7 +3,6 @@ package com.example.galaxypattern.gui.solar
 import com.example.galaxypattern.nav.NavController
 import javafx.animation.AnimationTimer
 import javafx.scene.layout.StackPane
-import javafx.scene.layout.VBox
 
 class SolarScene : StackPane() {
     private val navController = NavController.getInstance()
@@ -18,16 +17,16 @@ class SolarScene : StackPane() {
     }
 
     init {
-        scene.children.addAll(viewModel.backgroundView, viewModel.solarSystemView, viewModel.label, viewModel.button, viewModel.btnPlayStop, viewModel.slider)
+        scene.children.addAll(viewModel.backgroundView, viewModel.solarSystemView, viewModel.label, viewModel.mainMenuView)
         start()
         timer.start()
     }
 
     private fun start() {
-        viewModel.button.setOnAction {
+        viewModel.mainMenuView.button.setOnAction {
             navController.navigateTo("StartScene")
         }
-        viewModel.btnPlayStop.setOnAction {
+        viewModel.mainMenuView.btnPlayStop.setOnAction {
             viewModel.isRotate = !viewModel.isRotate
         }
         viewModel.solarSystemView.sun.setOnMouseClicked {
@@ -42,8 +41,17 @@ class SolarScene : StackPane() {
 
     private fun update() {
         viewModel.backgroundView.draw()
+        viewModel.mainMenuView.update()
         if (viewModel.isRotate) {
-            viewModel.solarSystemView.update()
+            viewModel.solarSystemView.update(getRotationSpeed())
+        }
+    }
+
+    private fun getRotationSpeed(): Double {
+        return if (viewModel.mainMenuView.slider.value < 1.0) {
+            1.0
+        } else {
+            viewModel.mainMenuView.slider.value
         }
     }
 }

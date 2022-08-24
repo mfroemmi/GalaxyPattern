@@ -31,12 +31,13 @@ class StartViewModel {
 
     init {
         label.apply {
-            translateY = -200.0
+            translateY = -300.0
             style = "-fx-text-fill: #FFFFFF; -fx-font-size: 48; "
         }
         button.apply {
-            translateY = 200.0
-            style = "-fx-background-color: #FFFFFF;"
+            maxWidth = 100.0
+            translateY = 300.0
+            style = "-fx-background-color: #99CCFF;"
         }
     }
 }

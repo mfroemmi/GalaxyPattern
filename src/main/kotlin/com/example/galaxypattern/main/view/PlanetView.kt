@@ -19,11 +19,11 @@ class PlanetView(private val planet: Planet, private val color: Color) : Canvas(
         this.height = radius
     }
 
-    fun draw(distanceCorrection: Int) {
+    fun draw(distanceCorrection: Int, rotationSpeed: Double) {
         if (phi >= 360.0) {
             phi = 0.0
         } else {
-            phi += 10 / planet.period
+            phi += 1 * rotationSpeed / planet.period
             this.translateX = planet.distance * cos(phi) * distanceCorrection
             this.translateY = planet.distance * sin(phi) * distanceCorrection
         }

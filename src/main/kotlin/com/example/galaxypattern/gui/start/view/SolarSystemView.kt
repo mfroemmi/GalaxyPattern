@@ -34,11 +34,11 @@ class SolarSystemView() : StackPane() {
         scene.children.addAll(sun, mercury, venus, earth, mars, jupiter, saturn, uranus, neptune)
     }
 
-    fun update() {
+    fun update(rotationSpeed: Double = 1.0) {
         sun.draw()
         for ((index, planet) in solarSystem.withIndex()) {
             val distanceCorrection = -4 * index + 40
-            planet.draw(distanceCorrection)
+            planet.draw(distanceCorrection, rotationSpeed)
         }
     }
 }
