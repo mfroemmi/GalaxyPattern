@@ -1,9 +1,12 @@
 package com.example.galaxypattern.gui.solar
 
 import com.example.galaxypattern.gui.solar.view.SolarSystemView
+import com.example.galaxypattern.gui.solar.view.infobox.InfoBoxView
 import com.example.galaxypattern.main.view.BackgroundView
 import com.example.galaxypattern.main.view.MainMenuView
+import com.example.galaxypattern.main.view.PlanetView
 import javafx.scene.control.Label
+import javax.swing.plaf.synth.Region
 
 class SolarViewModel {
 
@@ -29,6 +32,8 @@ class SolarViewModel {
     val solarSystemView = SolarSystemView()
     val mainMenuView = MainMenuView(700.0, 50.0)
 
+    var planetInfoBoxes: MutableList<InfoBoxView> = mutableListOf()
+
     var isRotate = false
 
     init {
@@ -38,6 +43,7 @@ class SolarViewModel {
         }
         mainMenuView.apply {
             translateY = 300.0
+            setMaxSize(700.0, 50.0)
         }
     }
 }

@@ -7,7 +7,7 @@ import javafx.scene.paint.Color
 import kotlin.math.cos
 import kotlin.math.sin
 
-class PlanetView(private val planet: Planet, private val color: Color) : Canvas() {
+class PlanetView(val planet: Planet, private val color: Color) : Canvas() {
 
     private val gc: GraphicsContext = this.graphicsContext2D
 

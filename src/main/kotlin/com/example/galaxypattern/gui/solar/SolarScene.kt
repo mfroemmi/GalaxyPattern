@@ -1,5 +1,7 @@
 package com.example.galaxypattern.gui.solar
 
+import com.example.galaxypattern.gui.solar.view.infobox.InfoBoxView
+import com.example.galaxypattern.model.Planet
 import com.example.galaxypattern.nav.NavController
 import javafx.animation.AnimationTimer
 import javafx.scene.layout.StackPane
@@ -34,6 +36,11 @@ class SolarScene : StackPane() {
         }
         viewModel.solarSystemView.earth.setOnMouseClicked {
             println("Earth")
+            createInfoBox(viewModel.solarSystemView.earth.planet)
+        }
+        viewModel.solarSystemView.mars.setOnMouseClicked {
+            println("Mars")
+            createInfoBox(viewModel.solarSystemView.mars.planet)
         }
 
         viewModel.solarSystemView.update()
@@ -45,6 +52,17 @@ class SolarScene : StackPane() {
         if (viewModel.isRotate) {
             viewModel.solarSystemView.update(getRotationSpeed())
         }
+
+        val removeList: MutableList<InfoBoxView> = mutableListOf()
+        viewModel.planetInfoBoxes.forEach { infoBox ->
+            if (infoBox.remove) {
+                removeList.add(infoBox)
+            }
+            infoBox.update()
+        }
+        removeList.forEach {
+            removeInfoBox(it)
+        }
     }
 
     private fun getRotationSpeed(): Double {
@@ -53,5 +71,17 @@ class SolarScene : StackPane() {
         } else {
             viewModel.mainMenuView.slider.value
         }
+    }
+
+    private fun createInfoBox(planet: Planet) {
+        val newInfoBox = InfoBoxView(planet)
+
+        viewModel.planetInfoBoxes.add(newInfoBox)
+        scene.children.add(newInfoBox)
+    }
+
+    private fun removeInfoBox(infoBox: InfoBoxView) {
+        viewModel.planetInfoBoxes.remove(infoBox)
+        scene.children.remove(infoBox)
     }
 }
