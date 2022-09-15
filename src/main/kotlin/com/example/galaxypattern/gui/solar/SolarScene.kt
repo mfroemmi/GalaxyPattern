@@ -34,6 +34,14 @@ class SolarScene : StackPane() {
         viewModel.solarSystemView.sun.setOnMouseClicked {
             println("Sun")
         }
+        viewModel.solarSystemView.mercury.setOnMouseClicked {
+            println("Mercury")
+            createInfoBox(viewModel.solarSystemView.mercury.planet)
+        }
+        viewModel.solarSystemView.venus.setOnMouseClicked {
+            println("Venus")
+            createInfoBox(viewModel.solarSystemView.venus.planet)
+        }
         viewModel.solarSystemView.earth.setOnMouseClicked {
             println("Earth")
             createInfoBox(viewModel.solarSystemView.earth.planet)
@@ -41,6 +49,22 @@ class SolarScene : StackPane() {
         viewModel.solarSystemView.mars.setOnMouseClicked {
             println("Mars")
             createInfoBox(viewModel.solarSystemView.mars.planet)
+        }
+        viewModel.solarSystemView.jupiter.setOnMouseClicked {
+            println("Jupiter")
+            createInfoBox(viewModel.solarSystemView.jupiter.planet)
+        }
+        viewModel.solarSystemView.saturn.setOnMouseClicked {
+            println("Saturn")
+            createInfoBox(viewModel.solarSystemView.saturn.planet)
+        }
+        viewModel.solarSystemView.uranus.setOnMouseClicked {
+            println("Uranus")
+            createInfoBox(viewModel.solarSystemView.uranus.planet)
+        }
+        viewModel.solarSystemView.neptune.setOnMouseClicked {
+            println("Neptune")
+            createInfoBox(viewModel.solarSystemView.neptune.planet)
         }
 
         viewModel.solarSystemView.update()

@@ -14,7 +14,7 @@ class BodyInfoView(widthView: Double, heightView: Double) : Canvas() {
     }
     fun draw() {
         gc.clearRect(0.0, 0.0, width, height)
-        gc.fill = Color.rgb(255,255,255,0.2)
-        gc.fillRoundRect(0.0, 0.0, width, height, 1.0, 1.0)
+        gc.fill = Color.rgb(50,50,50,0.6)
+        gc.fillRoundRect(0.0, 0.0, width, height, 0.0, 0.0)
     }
 }

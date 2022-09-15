@@ -8,6 +8,9 @@ import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.layout.*
+import javafx.scene.text.Font
+import javafx.scene.text.FontPosture
+import javafx.scene.text.FontWeight
 
 class InfoBoxView(planet: Planet) : VBox() {
 
@@ -29,6 +32,9 @@ class InfoBoxView(planet: Planet) : VBox() {
     private val headStackPane = StackPane()
     private val headHBox = HBox()
 
+    private val bodyStackPane = StackPane()
+    private val bodyVBox = VBox()
+
     var remove = false
 
     init {
@@ -44,7 +50,7 @@ class InfoBoxView(planet: Planet) : VBox() {
         close.apply {
             style = "-fx-font-size: 12; "
             background = Background(BackgroundFill(Colors.gray, CornerRadii.EMPTY, Insets.EMPTY))
-            textFill = Colors.lightGray
+            textFill = Colors.white
             minWidth = widthView * 0.1
             minHeight = headHeight - 1
             alignment = Pos.CENTER
@@ -80,11 +86,40 @@ class InfoBoxView(planet: Planet) : VBox() {
 
         headHBox.children.addAll(title, close)
         headStackPane.children.addAll(head, headHBox)
-        scene.children.addAll(headStackPane, body)
+        bodyVBox.children.addAll(
+            getLabel("name", viewModel.planetParams(planet).name()),
+            getLabel("atmosphere", viewModel.planetParams(planet).atmosphere()),
+            getLabel("density", viewModel.planetParams(planet).density()),
+            getLabel("diameter", viewModel.planetParams(planet).diameter()),
+            getLabel("moons", viewModel.planetParams(planet).moons()),
+            getLabel("mass", viewModel.planetParams(planet).mass()),
+            getLabel("distance", viewModel.planetParams(planet).distance()),
+            getLabel("inclination", viewModel.planetParams(planet).inclination()),
+            getLabel("period", viewModel.planetParams(planet).period()),
+            getLabel("rotation", viewModel.planetParams(planet).rotation())
+        )
+        bodyStackPane.children.addAll(body, bodyVBox)
+        scene.children.addAll(headStackPane, bodyStackPane)
     }
 
     fun update() {
         head.draw()
         body.draw()
+    }
+
+    private fun getLabel(title: String, description: String): HBox {
+        return HBox(
+            Label("$title:").apply {
+                font = Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 14.0)
+                textFill = Colors.white
+                padding = Insets(5.0)
+                minWidth = widthView * 0.3
+            },
+            Label(description).apply {
+                font = Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 14.0)
+                textFill = Colors.white
+                padding = Insets(5.0)
+                minWidth = widthView * 0.3
+            }).apply { padding = Insets(5.0) }
     }
 }
