@@ -7,3 +7,6 @@ Integration einiger typischer Design-Patterns, welche in der Softwareentwicklung
 
 ### Factory Pattern
 [IPlanetParamHelper.kt](https://github.com/mfroemmi/GalaxyPattern/blob/master/src/main/kotlin/com/example/galaxypattern/util/planetFactory/IPlanetParamHelper.kt)
+
+### Facade Pattern
+[IStringManager.kt](https://github.com/mfroemmi/GalaxyPattern/blob/master/src/main/kotlin/com/example/galaxypattern/util/stringFacadeManager/IStringManager.kt)

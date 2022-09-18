@@ -1,6 +1,8 @@
 package com.example.galaxypattern.util.planetFactory
 
 import com.example.galaxypattern.model.Planet
+import com.example.galaxypattern.util.stringFacadeManager.StringManager
+import com.example.galaxypattern.util.stringFacadeManager.StringParam
 
 class AllParams(private val planet: Planet) : IPlanetParamHelper {
     override fun name(): String {
@@ -24,11 +26,11 @@ class AllParams(private val planet: Planet) : IPlanetParamHelper {
     }
 
     override fun period(): String {
-        return "${planet.period} Tage"
+        return "${planet.period} ${StringManager().getString(StringParam.Planet_Info_Period)}"
     }
 
     override fun rotation(): String {
-        return "${planet.rotation} Tage"
+        return "${planet.rotation} ${StringManager().getString(StringParam.Planet_Info_Rotation)}"
     }
 
     override fun atmosphere(): String {

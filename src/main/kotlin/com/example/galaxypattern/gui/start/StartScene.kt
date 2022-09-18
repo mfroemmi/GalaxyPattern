@@ -1,12 +1,15 @@
 package com.example.galaxypattern.gui.start
 
+import com.example.galaxypattern.main.MainViewModel
 import com.example.galaxypattern.nav.NavController
+import com.example.galaxypattern.util.stringFacadeManager.Language
 import javafx.animation.AnimationTimer
 import javafx.scene.layout.StackPane
 
 class StartScene : StackPane() {
     private val navController = NavController.getInstance()
     private val viewModel = StartViewModel.getInstance()
+    private val viewModelMain = MainViewModel.getInstance()
 
     private val scene = this
 
@@ -17,7 +20,7 @@ class StartScene : StackPane() {
     }
 
     init {
-        scene.children.addAll(viewModel.backgroundView, viewModel.solarSystemView, viewModel.label, viewModel.button)
+        scene.children.addAll(viewModel.backgroundView, viewModel.solarSystemView, viewModel.label, viewModel.button, viewModel.language, viewModel.languageLabel)
         start()
         timer.start()
     }
@@ -27,11 +30,24 @@ class StartScene : StackPane() {
             navController.navigateTo("SolarScene")
         }
 
+        viewModel.languageItemEnglish.setOnAction {
+            viewModelMain.language = Language.ENGLISH
+        }
+
+        viewModel.languageItemGerman.setOnAction {
+            viewModelMain.language = Language.GERMAN
+        }
+
         viewModel.solarSystemView.update()
     }
 
     private fun update() {
         viewModel.backgroundView.draw()
         viewModel.solarSystemView.update()
+
+        when (viewModelMain.language) {
+            Language.ENGLISH -> viewModel.languageLabel.text = "English"
+            Language.GERMAN -> viewModel.languageLabel.text = "German"
+        }
     }
 }

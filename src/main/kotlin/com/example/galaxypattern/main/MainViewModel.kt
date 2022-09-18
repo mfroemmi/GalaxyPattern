@@ -2,6 +2,7 @@ package com.example.galaxypattern.main
 
 import com.example.galaxypattern.model.Planet
 import com.example.galaxypattern.util.planetFactory.*
+import com.example.galaxypattern.util.stringFacadeManager.Language
 
 class MainViewModel {
 
@@ -27,22 +28,10 @@ class MainViewModel {
 
     var planets: MutableList<Planet> = mutableListOf()
 
+    var language: Language = Language.ENGLISH
+
     init {
         createPlanets()
-
-        for (planet in planets) {
-            println(planetParams(planet).name())
-            println(planetParams(planet).diameter())
-            println(planetParams(planet).mass())
-            println(planetParams(planet).density())
-            println(planetParams(planet).distance())
-            println(planetParams(planet).period())
-            println(planetParams(planet).rotation())
-            println(planetParams(planet).atmosphere())
-            println(planetParams(planet).moons())
-            println(planetParams(planet).inclination())
-            println()
-        }
     }
 
     private fun createPlanets() {
