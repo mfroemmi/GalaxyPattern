@@ -1,5 +1,15 @@
 package com.example.galaxypattern.util.planetFactory
 
+/**
+ * Factory pattern
+ *
+ * @see IPlanetParamHelper
+ * @see PlanetType
+ * @see AllParams
+ * @see NoAtmosphere
+ * @see NoMoons
+ * @see NoMoonsAtmosphere
+ */
 interface IPlanetParamHelper {
     fun name(): String
     fun diameter(): String
