@@ -3,6 +3,8 @@ package com.example.galaxypattern.gui.solar.view.infobox
 import com.example.galaxypattern.main.MainViewModel
 import com.example.galaxypattern.model.Planet
 import com.example.galaxypattern.res.Colors
+import com.example.galaxypattern.util.stringFacadeManager.StringManager
+import com.example.galaxypattern.util.stringFacadeManager.StringParam
 import javafx.event.EventHandler
 import javafx.geometry.Insets
 import javafx.geometry.Pos
@@ -25,7 +27,7 @@ class InfoBoxView(planet: Planet) : VBox() {
     private val bodyHeight = 475.0
 
     private var title: Label = Label(planet.name)
-    private var close: Label = Label("close")
+    private var close: Label = Label(StringManager().getString(StringParam.InfoBox_Button_Close))
     private val head = HeadInfoView(widthView, headHeight)
     private val body = BodyInfoView(widthView, bodyHeight)
 
@@ -43,7 +45,7 @@ class InfoBoxView(planet: Planet) : VBox() {
 
         title.apply {
             style = "-fx-text-fill: #FFFFFF; -fx-font-size: 16; "
-            minWidth = widthView * 0.9
+            minWidth = widthView * 0.8
             minHeight = headHeight
             alignment = Pos.CENTER
         }
@@ -51,7 +53,7 @@ class InfoBoxView(planet: Planet) : VBox() {
             style = "-fx-font-size: 12; "
             background = Background(BackgroundFill(Colors.gray, CornerRadii.EMPTY, Insets.EMPTY))
             textFill = Colors.white
-            minWidth = widthView * 0.1
+            minWidth = widthView * 0.2
             minHeight = headHeight - 1
             alignment = Pos.CENTER
         }
@@ -121,5 +123,9 @@ class InfoBoxView(planet: Planet) : VBox() {
                 padding = Insets(5.0)
                 minWidth = widthView * 0.3
             }).apply { padding = Insets(5.0) }
+    }
+
+    fun resetStrings() {
+        close.text = StringManager().getString(StringParam.InfoBox_Button_Close)
     }
 }

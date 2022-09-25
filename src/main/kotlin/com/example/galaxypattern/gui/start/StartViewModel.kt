@@ -2,6 +2,8 @@ package com.example.galaxypattern.gui.start
 
 import com.example.galaxypattern.main.view.BackgroundView
 import com.example.galaxypattern.gui.start.view.SolarSystemView
+import com.example.galaxypattern.util.stringFacadeManager.StringManager
+import com.example.galaxypattern.util.stringFacadeManager.StringParam
 import javafx.scene.control.Button
 import javafx.scene.control.Label
 import javafx.scene.control.MenuButton
@@ -59,5 +61,10 @@ class StartViewModel {
             translateX = 150.0
             style = "-fx-background-color: #99CCFF;"
         }
+    }
+
+    fun resetStrings() {
+        button.text = StringManager().getString(StringParam.Scene_Solar_System_Title)
+        language.text = StringManager().getString(StringParam.Scene_Start_Button_Language)
     }
 }

@@ -4,9 +4,9 @@ import com.example.galaxypattern.gui.solar.view.SolarSystemView
 import com.example.galaxypattern.gui.solar.view.infobox.InfoBoxView
 import com.example.galaxypattern.main.view.BackgroundView
 import com.example.galaxypattern.main.view.MainMenuView
-import com.example.galaxypattern.main.view.PlanetView
+import com.example.galaxypattern.util.stringFacadeManager.StringManager
+import com.example.galaxypattern.util.stringFacadeManager.StringParam
 import javafx.scene.control.Label
-import javax.swing.plaf.synth.Region
 
 class SolarViewModel {
 
@@ -44,6 +44,14 @@ class SolarViewModel {
         mainMenuView.apply {
             translateY = 300.0
             setMaxSize(700.0, 50.0)
+        }
+    }
+
+    fun resetStrings() {
+        label.text = StringManager().getString(StringParam.Scene_Solar_System_Title)
+        mainMenuView.btnPlayStop.text = StringManager().getString(StringParam.Menu_Button_PlayStop)
+        for (infoBox in planetInfoBoxes) {
+            infoBox.resetStrings()
         }
     }
 }
