@@ -10,3 +10,9 @@ Integration einiger typischer Design-Patterns, welche in der Softwareentwicklung
 
 ### Facade Pattern
 [IStringManager.kt](https://github.com/mfroemmi/GalaxyPattern/blob/master/src/main/kotlin/com/example/galaxypattern/util/stringFacadeManager/IStringManager.kt)
+
+# Screenshots
+
+<img src="images/galaxy01.png">
+<img src="images/galaxy02.png">
+<img src="images/galaxy03.png">
